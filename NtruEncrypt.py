@@ -1,4 +1,4 @@
-from Polynomial import Zx
+from Polynomial1 import Zx
 from random import randrange
 from copy import deepcopy
 import sympy as sym
