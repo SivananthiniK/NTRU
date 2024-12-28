@@ -133,10 +133,8 @@ def encrypt(message, public_key, d, N, q, r_poly):
     """
     Encrypt a message using the NTRU public key and an explicitly provided r_poly.
     """
-    # Encryption process
     cipher_text = balancedmodulus(cyclic_convolution(public_key, r_poly, N).add(message), q, N)
     return cipher_text
-
 
 
 def decrypt(cipher_text,private_key,p,q,N):
