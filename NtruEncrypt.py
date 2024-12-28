@@ -129,7 +129,7 @@ def generate_keypair(p,q,d,N):
     secret_key = F,F_inverse
     return public_key,secret_key    
 
-def encrypt(message, public_key, d, N, q, r_poly=None):
+def encrypt(message, public_key, d, N, q, r_poly):
     """
     Encrypt a message using the NTRU public key and an optional r_poly (random polynomial).
     """
