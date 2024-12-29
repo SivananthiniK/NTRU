@@ -1,4 +1,4 @@
-from Polynomial1 import Zx
+from Polynomial import Zx
 from random import randrange
 from copy import deepcopy
 import sympy as sym
@@ -129,29 +129,17 @@ def generate_keypair(p,q,d,N):
     secret_key = F,F_inverse
     return public_key,secret_key    
 
-def encrypt(message, public_key, d, N, q, r_poly):
-    """
-    Encrypt a message using the NTRU public key and an explicitly provided r_poly.
-    """
-    cipher_text = balancedmodulus(cyclic_convolution(public_key, r_poly, N).add(message), q, N)
+def encrypt(message,public_key,d,N,q):
+    r = Zx([])
+    r.randompoly(d,N)           # r is the binding value
+    cipher_text = balancedmodulus(cyclic_convolution(public_key,r,N).add(message),q,N)
     return cipher_text
 
-
-def encrypt(message, public_key, d, N, q, *args):
-    """
-    Encrypt a message using the NTRU public key and optionally additional arguments.
-    """
-    # Check for r_poly in args
-    if len(args) > 0:
-        r_poly = args[0]
-    else:
-        r_poly = Zx([])
-        r_poly.randompoly(d, N)
-
-    # Encryption process
-    cipher_text = balancedmodulus(cyclic_convolution(public_key, r_poly, N).add(message), q, N)
-    return cipher_text
-
+def decrypt(cipher_text,private_key,p,q,N):
+    F, F_inverse = private_key
+    a = balancedmodulus(cyclic_convolution(cipher_text,F,N),q,N)
+    decrypted_message = balancedmodulus(cyclic_convolution(a,F_inverse,N),p,N)
+    return decrypted_message
 
 def cross_check(decrypted_message,plain_text):
     if functools.reduce(lambda i,j:i and j,map(lambda m,k:m == k,plain_text.coeffs,decrypted_message.coeffs),True):
