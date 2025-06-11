@@ -1,0 +1,85 @@
+Running with gitlab-runner 16.11.0 (91a27b2a)
+  on gitlab-runner-local-5_2 8xuWQaVRc, system ID: s_d0d52d4da736
+Preparing the "docker" executor
+00:08
+Using Docker executor with image node:latest ...
+Pulling docker image node:latest ...
+Using docker image sha256:755ea2a01757be91284247988150cb347565f3b7151b6cbbe727261bf811985b for node:latest with digest node@sha256:2a44af4aa20d3c9a4cb80c979a9853974600dd73e00423130305f1331ac9e63c ...
+Preparing environment
+00:01
+Running on runner-8xuwqavrc-project-1291-concurrent-0 via gitlab-runner-local-5.mitsogo.dev...
+Getting source from Git repository
+00:13
+Fetching changes with git depth set to 20...
+Initialized empty Git repository in /builds/devops/statusapp/.git/
+Created fresh repository.
+Checking out 0c43a345 as detached HEAD (ref is refs/merge-requests/32/head)...
+Skipping Git submodules setup
+Executing "step_script" stage of the job script
+00:17
+Using docker image sha256:755ea2a01757be91284247988150cb347565f3b7151b6cbbe727261bf811985b for node:latest with digest node@sha256:2a44af4aa20d3c9a4cb80c979a9853974600dd73e00423130305f1331ac9e63c ...
+$ npm config set @hex:registry https://${CI_SERVER_HOST}/api/v4/projects/164/packages/npm/
+$ npm config set -- '//${CI_SERVER_HOST}/api/v4/projects/164/packages/npm/:_authToken' ${GITLAB_TOKEN}
+$ npm i @hex/{commitlint-cli,commitlint-config-conventional}
+npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+npm warn deprecated
+npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+added 183 packages in 16s
+27 packages are looking for funding
+  run `npm fund` for details
+$ echo "module.exports={extends:['@hex/commitlint-config-conventional'],rules:{'body-max-line-length':[2,'always',Infinity],'footer-max-line-length':[2,'always',Infinity],'header-max-length':[2,'always',Infinity],'body-max-length':[2,'always',Infinity],'subject-max-length':[2,'always',Infinity],'footer-max-length':[2,'always',Infinity],}}" > commitlint.config.js
+$ if [ -z "$CI_MERGE_REQUEST_DIFF_BASE_SHA" ]; then exit 0; fi
+$ echo "${CI_COMMIT_TITLE}\n\n${CI_COMMIT_DESCRIPTION}" | npx commitlint --from="$CI_MERGE_REQUEST_DIFF_BASE_SHA"
+⧗   input: Edit updater.yml
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Edit envfile.env.j2
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Edit deployment.yml
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Edit envfile.env.j2
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Edit updater.yml
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Edit updater.yml
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Edit deployment.yml
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Edit deployment.yml
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Edit updater.yml
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+⧗   input: Copy gitlab variables to env file
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+Cleaning up project directory and file based variables
+00:00
+ERROR: Job failed: exit code 1
